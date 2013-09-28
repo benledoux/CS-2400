@@ -1,0 +1,84 @@
+def program():
+	f = open('data1.txt','r')
+	
+	acc=0
+	arr=[0]*1000
+	switch = False
+
+
+	spot=0
+	for line in f.readlines():
+		for i in line.split():
+			arr[spot] = int(i)
+			spot+=1
+
+	endofcode=0
+	while arr[endofcode] != 0:
+		endofcode+=1
+	
+	if arr[endofcode] == 0:
+		while arr[endofcode] == 0:
+			endofcode+=1
+
+	count = 0
+	while switch == False:
+		if arr[count] == 1:
+			acc = arr[arr[count+1]] + acc
+			count += 2
+		
+		elif arr[count] == 2:
+			acc = acc - arr[arr[count+1]]
+			count += 2
+		
+		elif arr[count] == 3:
+			acc = acc * arr[arr[count+1]]
+			count += 2
+		
+		elif arr[count] == 4:
+			acc = acc / arr[arr[count+1]]
+			count += 2
+		
+		elif arr[count] == 5:
+			arr[arr[count+1]] = arr[endofcode]
+			endofcode+=1
+			count += 2
+		
+		elif arr[count] == 6:
+			print arr[arr[count+1]]
+			count += 2
+		
+		elif arr[count] == 7:
+			acc = arr[arr[count+1]]
+			count += 2
+		
+		elif arr[count] == 8:
+			arr[arr[count+1]] = acc
+			count += 2
+		
+		elif arr[count] == 9:
+			acc = arr[arr[count+1]]
+			count += 2
+		
+		elif arr[count] == 10:
+			count = arr[count+1]
+		
+		elif arr[count] == 11:
+			if acc == 0:
+				count = arr[count+1]
+			else:
+				count += 2
+		
+		elif arr[count] == 12:
+			if acc < 0:
+				count = arr[count+1]
+			else:
+				count += 2
+		
+		elif arr[count] == 13:
+			switch = True
+		
+		else:
+			return "Not a valid command"
+
+
+program()

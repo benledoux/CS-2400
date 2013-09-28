@@ -1,0 +1,54 @@
+        iload   0
+        store   max     . initialize max to 0
+        iload   10000
+        store   min     . initialize min 
+        iload   0
+        store   count       . initialize count
+        store   sum
+        read    pairs
+        iload   2
+        mult    pairs
+        store   reps
+loop:   read    num
+        load    sum
+        add     num
+        store   sum
+        iload   1
+        add     count
+        store   count
+        load    min
+        sub     num
+        blt     oldmin      . not a new min
+        load    num
+        store   min
+oldmin: load    max
+        sub     num
+        blt     newmax      . new max
+        br      oldmax      . goto oldmax
+newmax: load    num
+        store   max
+oldmax: load    reps
+        sub     count
+        beq     out
+        br      loop
+out:    print   min
+        print   max
+        print   count
+        print   sum
+        load    sum
+        div     count
+        store   avg
+        print   avg
+        halt
+        data
+        5
+        12
+        77
+        128
+        3
+        55
+        6
+        145
+        9
+        467
+	19

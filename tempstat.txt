@@ -1,0 +1,9 @@
+        iload   20
+        store   max     . initialize max to 0
+        iload   5
+        store   min     . initialize min 
+        load    max
+        div     min
+        store   answer
+        print   answer
+        halt
